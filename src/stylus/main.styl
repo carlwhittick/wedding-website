@@ -1,0 +1,42 @@
+:root {
+    --primary: #ff9d9a;
+    --secondary: #072432;
+    --background: #FFF;
+    --recessed: '#AAA';
+
+    --font-serif: 'Playfair Display', serif;
+    --font-sans: 'Raleway', sans-serif;
+    --font-mono: 'Droid Sans Mono', monospace;
+}
+
+$grid-breakpoints := {
+    xs: 0
+    sm: 544px
+    md: 768px
+    lg: 992px
+    xl: 1200px
+}
+
+html {
+    box-sizing: border-box;
+    font-size: 10px;
+}
+
+*, *:before, *:after {
+    box-sizing: inherit;
+}
+
+body {
+    font-family: var(--font-sans);
+    color: var(--secondary);
+    background: var(--background);
+    padding: 0;
+    font-size: 1.6em;
+}
+
+.card__media__background {
+    background-color: var(--secondary) !important;
+    background-blend-mode: hard-light;
+}
+
+@import '~vuetify/src/stylus/main'
