@@ -2,14 +2,9 @@ import firebase from 'firebase/app'
 import 'firebase/auth'
 import 'firebase/firestore'
 
-firebase.initializeApp({
-    apiKey: 'AIzaSyBYCjId-2OsNnn08wszEFLtBaQhcrWccXY',
-    authDomain: 'whittick-wedding.firebaseapp.com',
-    databaseURL: 'https://whittick-wedding.firebaseio.com',
-    projectId: 'whittick-wedding',
-    storageBucket: 'whittick-wedding.appspot.com',
-    messagingSenderId: '811955179602'
-})
+import settings from '../settings.json'
+
+firebase.initializeApp(settings.firebase)
 
 const firestore = firebase.firestore()
 firestore.settings({
