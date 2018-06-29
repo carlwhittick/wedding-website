@@ -5,7 +5,6 @@
             <Button anchor large to="/sign-in">RSVP now</Button>
         </Hero>
         <Container style="margin-top: -200px;">
-            aaa
         </Container>
     </div>
 </template>
