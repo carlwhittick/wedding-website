@@ -3,7 +3,6 @@ import Vue from 'vue'
 export default Vue.component('Wrapper', {
     name: 'Wrapper',
     render(createElement) {
-        console.log("props", this.$props.props)
         return createElement(
             this.tag,   // tag name
             {
