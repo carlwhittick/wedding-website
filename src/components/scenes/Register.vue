@@ -1,8 +1,8 @@
 <template>
     <div>
         <Hero />
-        <Container style="margin-top: -20rem">
-            <template v-if="! $store.getters.loading && ! $store.getters.fetching">
+        <Container style="margin-top: -12rem">
+            <template v-if="! $store.getters.loading">
                 <template v-if="inviteCode && people.length > 0">
                     <v-card class="card">
                         <Heading>{{ invite.name }}</Heading>
@@ -36,10 +36,21 @@ import { mapGetters } from 'vuex';
 export default {
     name: 'Register',
     created() {
+        if(this.inviteCode === undefined) {
+            this.$router.push("/sign-in")
+            return
+        }
+
         // Open the invitation
         this.$store.dispatch("invitation/openInvitation", { code: this.inviteCode }).then(() => {
             // Get unregistered people
             const invite = this.$store.getters["invitation/invite"]
+
+            if(invite === null) {
+                this.$router.push("/sign-in")
+                return
+            }
+
             const unregisteredPeople = invite.people.where("registered", "==", false)
             unregisteredPeople.get().then((querySnapshot) => {
                 querySnapshot.forEach((doc) => {
@@ -67,6 +78,13 @@ export default {
             'invite'
         ])
     },
+    asyncComputed: {
+        test() {
+            // let aaa = this.$store.dispatch("invitation/openInvitation", { code: this.inviteCode })
+            console.log("TEST")
+            // return this.$store.dispatch("invitation/openInvitation", { code: this.inviteCode })
+        }
+    },
     components: {
         RegistrationForm,
         InvitationCard,
@@ -79,6 +97,6 @@ export default {
 
 <style lang="scss" scoped>
 .card {
-    padding: 1.6rem;
+    padding: 1.0rem;
 }
 </style>
